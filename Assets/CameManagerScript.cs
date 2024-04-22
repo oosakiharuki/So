@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
@@ -93,8 +93,8 @@ public class NewBehaviourScript : MonoBehaviour
         };
 
 
-        //map.GetLength(0) = ?s = 3?s
-        //map.GetLength(1) = ?? = 5??
+        //map.GetLength(0) = s = 3s
+        //map.GetLength(1) = —ñ = 5—ñ
         field = new GameObject[map.GetLength(0), map.GetLength(1)];
 
         string debugText = "";
