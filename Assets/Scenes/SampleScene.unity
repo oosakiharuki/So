@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7297930278718690845, guid: 8390a3790fb941a4798c862f244b3e2e, type: 3}
   boxPrefab: {fileID: 1402155627596745290, guid: 146f1571ad000ba4190eff096c6d0c53, type: 3}
-  goalPrefab: {fileID: 0}
+  GoalPrefab: {fileID: 7155406415529753265, guid: 3b70e86b83e77764ebb2072feaff1206, type: 3}
   clearText: {fileID: 1048218136}
 --- !u!4 &699942116
 Transform:

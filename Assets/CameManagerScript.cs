@@ -10,7 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public GameObject boxPrefab;
 
-    public GameObject goalPrefab;
+    public GameObject GoalPrefab;
 
     public GameObject clearText;
 
@@ -163,7 +163,14 @@ private
                         Quaternion.identity
                         );
                 }
-
+                if (map[y, x] == 3)
+                {
+                    field[y, x] = Instantiate(
+                        GoalPrefab,
+                        new Vector3(x, map.GetLength(0) - y, 0.01f),
+                        Quaternion.identity
+                        );
+                }
 
 
             }
