@@ -156,6 +156,8 @@ MonoBehaviour:
   boxPrefab: {fileID: 1402155627596745290, guid: 146f1571ad000ba4190eff096c6d0c53, type: 3}
   GoalPrefab: {fileID: 7155406415529753265, guid: 3b70e86b83e77764ebb2072feaff1206, type: 3}
   clearText: {fileID: 1048218136}
+  particlePrefab: {fileID: 6710163577826354041, guid: 395e4622a88031a45baa82b8743c0294, type: 3}
+  NoMoveBoxPrefab: {fileID: 5519869992516803034, guid: 5c4cae3a0e3421849a21ec452ce46768, type: 3}
 --- !u!4 &699942116
 Transform:
   m_ObjectHideFlags: 0
@@ -452,7 +454,7 @@ RectTransform:
   m_GameObject: {fileID: 1048218136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1135818040}

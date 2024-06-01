@@ -14,6 +14,10 @@ public class NewBehaviourScript : MonoBehaviour
 
     public GameObject clearText;
 
+    public GameObject particlePrefab;
+
+    public GameObject NoMoveBoxPrefab;
+
     int[,] map = { };
 
     GameObject[,] field;
@@ -59,7 +63,13 @@ private
                     continue;
                 }
                 if (field[y, x].tag == "Player")
-                {
+                {               
+                    //Particle
+                    Instantiate(
+                  particlePrefab,
+                  new Vector3(x, map.GetLength(0) - y, 0),
+                  Quaternion.identity
+                  );
                     return new Vector2Int(x, y);
                 }
             }
@@ -77,7 +87,7 @@ private
         {
             return false;
         }
-        if (field[moveTo.y,moveTo.x] != null && field[moveTo.y,moveTo.x].tag == "Box")
+        if (field[moveTo.y, moveTo.x] != null && field[moveTo.y, moveTo.x].tag == "Box")
         {
             Vector2Int velocity = moveTo - moveFrom;
             bool success = MoveNumber(moveTo, moveTo + velocity);
@@ -86,9 +96,18 @@ private
                 return false;
             }
         }
+        if (field[moveTo.y, moveTo.x] != null && map[moveTo.y, moveTo.x] == 4)
+        {
+            return false;   
+        }
+
+
+        Vector3 moveToPosition = new Vector3(moveTo.x, map.GetLength(0) - moveTo.y, 0);
+
+        field[moveFrom.y, moveFrom.x].GetComponent<Move>().MoveTo(moveToPosition);
 
         field[moveTo.y,moveTo.x] = field[moveFrom.y, moveFrom.x];
-        field[moveFrom.y, moveFrom.x].transform.position = new Vector3(moveTo.x, map.GetLength(0) - moveTo.y, 0);
+        //field[moveFrom.y, moveFrom.x].transform.position = new Vector3(moveTo.x, map.GetLength(0) - moveTo.y, 0);
         field[moveFrom.y, moveFrom.x] = null;
         return true;
     }
@@ -101,7 +120,6 @@ private
             {
                 if (map[y,x] == 3)
                 {
-
                     goals.Add(new Vector2Int(x, y));
                 }
             }
@@ -121,15 +139,20 @@ private
     // Start is called before the first frame update
     void Start()
     {
+        
+        Screen.SetResolution(1280, 720, false);
+        
         //map = new int[] { 0, 0, 0, 1, 0, 2, 0, 0, 0 };
         //PrintArray();
 
         map = new int[,] {
-            {0,0,0,0,0},
-            {0,3,0,3,0},
-            {0,1,2,0,0},
-            {0,2,3,2,0},
-            {0,0,0,0,0}
+            {4,4,4,4,4,4,4},
+            {4,0,0,0,4,0,4},
+            {4,0,3,4,3,0,4},
+            {4,0,1,2,0,0,4},
+            {4,0,2,3,2,0,4},
+            {4,0,0,0,0,0,4},
+            {4,4,4,4,4,4,4}
         };
 
 
@@ -171,7 +194,14 @@ private
                         Quaternion.identity
                         );
                 }
-
+                if (map[y, x] == 4)
+                {
+                    field[y, x] = Instantiate(
+                        NoMoveBoxPrefab,
+                        new Vector3(x, map.GetLength(0) - y, 0.01f),
+                        Quaternion.identity
+                        );
+                }
 
             }
             debugText += "\n";
