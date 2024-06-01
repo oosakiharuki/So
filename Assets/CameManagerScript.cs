@@ -206,7 +206,7 @@ private
             }
             debugText += "\n";
         }
-        Debug.Log(debugText);
+        Debug.Log(debugText); 
     }
 
     // Update is called once per frame
@@ -240,6 +240,15 @@ private
         if(IsCleard())
         {
             clearText.SetActive(true);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {    
+            //リセット
+            Destroy(gameObject);
+            Start();    
+            clearText.SetActive(false);
         }
     }
 }
