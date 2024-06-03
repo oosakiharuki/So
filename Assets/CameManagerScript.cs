@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -141,18 +142,18 @@ private
     {
         
         Screen.SetResolution(1280, 720, false);
-        
+
         //map = new int[] { 0, 0, 0, 1, 0, 2, 0, 0, 0 };
         //PrintArray();
 
         map = new int[,] {
-            {4,4,4,4,4,4,4},
-            {4,0,0,0,4,0,4},
-            {4,0,3,4,3,0,4},
-            {4,0,1,2,0,0,4},
-            {4,0,2,3,2,0,4},
-            {4,0,0,0,0,0,4},
-            {4,4,4,4,4,4,4}
+            {4,4,4,4,4,4,4,4,4,4,4},
+            {4,0,0,3,4,0,0,0,0,0,4},
+            {4,0,0,4,0,2,0,0,0,0,4},
+            {4,0,1,2,0,0,0,4,3,0,4},
+            {4,0,0,0,2,0,0,4,0,0,4},
+            {4,0,0,0,0,0,3,0,0,0,4},
+            {4,4,4,4,4,4,4,4,4,4,4}
         };
 
 
@@ -206,7 +207,7 @@ private
             }
             debugText += "\n";
         }
-        Debug.Log(debugText);
+        Debug.Log(debugText); 
     }
 
     // Update is called once per frame
@@ -240,6 +241,12 @@ private
         if(IsCleard())
         {
             clearText.SetActive(true);
+        }
+
+        //リセット
+        if (Input.GetKeyDown(KeyCode.R))
+        { 
+            SceneManager.LoadScene(0);
         }
     }
 }
